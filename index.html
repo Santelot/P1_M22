@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook-P1-M22</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; color: #333; line-height: 1.6;}
+        .container { max-width: 1000px; margin: auto; padding: 20px; }
+        .header { background-color: #4CAF50; color: white; text-align: center; padding: 10px; }
+        .dropdown { margin-bottom: 20px; }
+        .dropdown select {font-size: 1em; padding: 5px;}
+        .activity { margin-bottom: 20px; }
+         .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .content { display: none; padding: 10px; border: 1px solid #ddd; margin-bottom: 10px; }
+         table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+         span[style*="color: red;"] {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function updateActivities() {
+             const selectedTime = document.getElementById('class-time').value;
+            const activity2 = document.getElementById('activity-2');
+             const activity4 = document.getElementById('activity-4');
+             const pasos6y7act4 = document.querySelectorAll('#activity_4_content tr:nth-child(n+7):nth-child(-n+8)');
+
+
+            if (selectedTime === '45') {
+                activity2.style.display = 'none';
+                  pasos6y7act4.forEach(element => {
+                    element.style.display = 'table-row';
+                });
+                if (activity4) activity4.style.display = 'block';
+
+
+            } else if (selectedTime === '40') {
+                activity2.style.display = 'none';
+                  pasos6y7act4.forEach(element => {
+                    element.style.display = 'none';
+                });
+                if (activity4) activity4.style.display = 'block';
+
+            } else {
+                activity2.style.display = 'block';
+                   pasos6y7act4.forEach(element => {
+                    element.style.display = 'table-row';
+                });
+                if (activity4) activity4.style.display = 'block';
+
+            }
+
+            document.getElementById('selected-time').innerText = `Tiempo efectivo de clase: ${selectedTime} minutos`;
+        }
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            content.style.display = content.style.display === "none" ? "block" : "none";
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>Playbook-P1-M22</h1>
+    </div>
+    <div class="container">
+        <div class="dropdown">
+            <label for="class-time">Tiempo efectivo de Clase:</label>
+            <select id="class-time" onchange="updateActivities()">
+                <option value="50">50 minutos</option>
+                <option value="45">45 minutos</option>
+                <option value="40">40 minutos</option>
+            </select>
+        </div>
+        <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+        <!-- Actividad 0 -->
+         <div id="activity-0" class="activity" data-time="N/A">
+            <div class="banner" onclick="toggleContent('activity_0_content')">
+                <div class="title">🔍 Actividad 0: Revisión de Misión</div>
+                  <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 5px 0;">
+                   <div class="subtitle" style="margin-top: 5px; font-size: 0.9em; color: #e0e0e0;">
+                    Verificación inicial del equipo y materiales necesarios para completar la misión.
+                </div>
+            </div>
+            <div id="activity_0_content" class="content">
+                <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+                    <tr style="border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                        <th style="width: 50%; padding: 10px; text-align: left; border-right: 1px solid #ddd;">Acción</th>
+                        <th style="width: 50%; padding: 10px; text-align: left;">Diálogo Maestro</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                           <strong>Paso 1:</strong> Proyectar la diapositiva 1 "Revisión de Misión". Verificar que:
+                            <ul>
+                                <li>Los dispositivos estén encendidos y tienen acceso a Scratch Jr.</li>
+                                <li>Las Magic Tablets estén disponibles.</li>
+                                <li>El espacio de trabajo esté organizado.</li>
+                            </ul>
+                        </td>
+                        <td style="padding: 10px; vertical-align: top;">N/A</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- Actividad 1 -->
+        <div id="activity-1" class="activity" data-time="3">
+            <div class="banner" onclick="toggleContent('activity_1_content')">
+                <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 3 minutos</div>
+                 <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 5px 0;">
+                <div class="subtitle" style="margin-top: 5px; font-size: 0.9em; color: #e0e0e0;">
+                    Bienvenida al grupo, elección del nombre del personaje, agradecimiento y presentación de los objetivos del día.
+                </div>
+            </div>
+            <div id="activity_1_content" class="content">
+                <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+                    <tr style="border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                         <th style="width: 50%; padding: 10px; text-align: left; border-right: 1px solid #ddd;">Acción</th>
+                         <th style="width: 50%; padding: 10px; text-align: left;">Diálogo Maestro</th>
+                     </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;"><strong>Paso 1 (0,5 minutos):</strong> Proyectar la diapositiva 2 "¡Bienvenidos al Laberinto!". Saludar a los estudiantes con entusiasmo y energía.</td>
+                        <td style="padding: 10px; vertical-align: top;">"¡Hola, Genios! 🐾 ¡Bienvenidos a una nueva misión llena de retos y creatividad! Hoy vamos a explorar laberintos increíbles, y para hacerlo aún más emocionante, ¡necesitamos un nombre para nuestro valiente personaje! ¿Están listos para comenzar esta aventura y dar vida a nuestro protagonista? ¡Vamos a prepararnos para una misión épica!"</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;"><strong>Paso 2 (1,5 minutos):</strong> Proyectar la diapositiva 3 "¿Listos para la Aventura?". Mostrar opciones visuales de poses temáticas (¡Emocionado por la Aventura! y Necesito Más Energía). Pedir que representen cómo se sienten usando estas poses y propongan nombres.</td>
+                         <td style="padding: 10px; vertical-align: top;">"¡Exploradores de laberintos! 🌟 Muéstrenme cómo se sienten hoy: - Si están súper emocionados y listos para la aventura, hagan la Pose de ¡Emocionado por la Aventura! (levanten ambos brazos y sonrían, mostrando su energía y entusiasmo 😄). - Si necesitan un poco más de energía para comenzar, hagan la Pose de Necesito Más Energía (crucen los brazos y miren hacia abajo, como si necesitaran un empujoncito para despegar 😴). ¡Observen a sus compañeros! ¿Quiénes están listos para la acción y quiénes necesitan un poco más de motivación? Ahora, compartan sus propuestas! ¿Qué nombre le darían a nuestro explorador del laberinto?"</td>
+                    </tr>
+                     <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;"><strong>Paso 3 (0,5 minutos):</strong> Proyectar la diapositiva 4 "Ritual de Agradecimiento en el Laberinto". Guiar a los estudiantes para realizar el ritual en conjunto.</td>
+                        <td style="padding: 10px; vertical-align: top;">"Ahora todos juntos, juntemos nuestras manos y digamos: '¡Gracias por estar aquí, Genios! Hoy vamos a resolver laberintos, programar aventuras y divertirnos mucho junto a nuestro nuevo personaje. ¡A explorar y superar cada desafío juntos!'"</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;"><strong>Paso 4 (0,5 minutos):</strong> Proyectar la diapositiva 5 "Objetivos de la Misión en el Laberinto". Enumerar los objetivos de la misión en un formato claro y motivador, incluyendo el nombre elegido por los estudiantes.</td>
+                        <td style="padding: 10px; vertical-align: top;">"Hoy tenemos una misión en el laberinto, Genios: 1. Usar bloques de movimiento para guiar a [Nombre del Personaje, elegido por los estudiantes] a través de laberintos. 2. Resolveremos desafíos de laberintos con cruces y obstáculos. 3. ¡Vamos a compartir nuestras soluciones y celebrar cada logro con [Nombre del Personaje]! Será una aventura llena de retos y diversión."</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- Actividad 2 -->
+        <div id="activity-2" class="activity" data-time="4">
+             <div class="banner" onclick="toggleContent('activity_2_content')">
+                <div class="title">🧠 Actividad 2: Brain Gym ⏰ Tiempo: 4 minutos</div>
+                 <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 5px 0;">
+                <div class="subtitle" style="margin-top: 5px; font-size: 0.9em; color: #e0e0e0;">
+                    Gimnasia mental para activar el cerebro y prepararse para los retos de laberintos.
+                </div>
+            </div>
+            <div id="activity_2_content" class="content">
+                <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+                    <tr style="border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                        <th style="width: 50%; padding: 10px; text-align: left; border-right: 1px solid #ddd;">Acción</th>
+                        <th style="width: 50%; padding: 10px; text-align: left;">Diálogo Maestro</th>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;"><strong>Paso 1 (0,5 minutos):</strong> Proyectar la diapositiva 6 "¡Gimnasia Mental para Laberintos!". Explicar brevemente que realizarán movimientos para despertar el cerebro y prepararse para los retos de laberintos.</td>
+                        <td style="padding: 10px; vertical-align: top;">"¡Exploradores de Laberintos! 🧠 Vamos a activar nuestras mentes con una gimnasia cerebral especial, ¡lista para superar cualquier laberinto! Prepárense para moverse y despertar su cerebro mientras nos preparamos para guiar a nuestro personaje en su aventura."</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;"><strong>Paso 2 (2 minutos):</strong> Guiar a los estudiantes en tres movimientos: - El Laberinto con los Dedos: Trazar un laberinto imaginario en la palma de la mano con el dedo índice. - Las Flechas Guía: Mover las manos en diferentes direcciones (arriba, abajo, izquierda, derecha) como si estuvieran guiando al personaje. - El Salto de Obstáculos: Simular saltos suaves, como si estuvieran saltando sobre obstáculos en el laberinto. Mantener cada movimiento durante 30 segundos.</td>
+                        <td style="padding: 10px; vertical-align: top;">"¡Ahora, Genios, vamos a movernos como verdaderos exploradores de laberintos! ✨ - El Laberinto con los Dedos: Usen su dedo índice para trazar un laberinto imaginario en la palma de su mano, como si estuvieran buscando el camino. - Las Flechas Guía: Muevan sus manos en todas las direcciones como si fueran flechas guiando a nuestro personaje por el laberinto. - El Salto de Obstáculos: Salten suavemente, como si estuvieran superando obstáculos en su camino por el laberinto. ¡Sientan cómo su cerebro se activa con cada movimiento!"</td>
+                    </tr>
+                     <tr>
+                        <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;"><strong>Paso 3 (1,5 minutos):</strong> Proyectar la diapositiva 8 "¡Listos para la Aventura!". Preguntar a los estudiantes cómo se sienten después de los movimientos y cómo esta energía los prepara para los desafíos de programación en Scratch Jr.</td>
+                        <td style="padding: 10px; vertical-align: top;">"¡Excelente trabajo, Exploradores! 🌟 Ahora, cuéntennos, ¿cómo se sienten después de esta gimnasia mental para laberintos? ¿Sienten su cerebro más despierto y listo para la aventura? Recuerden, esta energía y concentración nos ayudará a guiar a nuestro personaje a través de los laberintos más desafiantes en Scratch Jr. ¡Prepárense para resolver cada reto!"</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+       <!-- Actividad 3 -->
+        <div id="activity-3" class="activity" data-time="24.5">
+            <div class="banner" onclick="toggleContent('activity_3_content')">
+                <div class="title">🚀 Actividad 3: Challenge ⏰ Tiempo: 24.5 minutos</div>
+                 <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 5px 0;">
+                <div class="subtitle" style="margin-top: 5px; font-size: 0.9em; color: #e0e0e0;">
+                   Desafío de resolución de laberintos en tres niveles de dificultad, incluyendo la personalización del personaje.
+                </div>
+            </div>
+            <div id="activity_3_content" class="content">
+                <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+                    <tr style="border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                        <th style="width: 50%; padding: 10px; text-align: left; border-right: 1px solid #ddd;">Acción</th>
+                        <th style="width: 50%; padding: 10px; text-align: left;">Diálogo Maestro</th>
+                    </tr>
+                     <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;"><strong>Paso 1 (0,5 minutos):</strong> Proyectar la diapositiva 9 "¡El Desafío del Laberinto!". Explicar a los estudiantes que trabajarán en tres niveles de dificultad para resolver laberintos, y que ellos mismos le pondrán nombre a su personaje.</td>
+                         <td style="padding: 10px; vertical-align: top;">"¡Exploradores de Laberintos, llegó el momento de poner a prueba sus habilidades en Scratch Jr.! 🚀 Hoy vamos a enfrentar laberintos cada vez más desafiantes. Tenemos tres niveles de aventura: 'Laberinto Sencillo', 'Laberinto con Decisiones' y 'Laberinto con Obstáculos'. ¡Y recuerden que ustedes le pondrán nombre a nuestro valiente personaje! ¡Elijan su reto y prepárense para la acción!"</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;"><strong>Paso 2 (2 minutos):</strong> Proyectar la diapositiva 10 "Niveles del Desafío en el Laberinto". Explicar claramente los objetivos, instrucciones, <span style="color: red; font-weight: bold;">condiciones</span> y un <span style="color: red; font-weight: bold;">consejo</span> útil para cada nivel, incluyendo el texto completo de los challenges.</td>
+                        <td style="padding: 10px; vertical-align: top;">"¡Atención, Genios! Aquí están los desafíos que les esperan en el laberinto: <br><br> <strong>Nivel Rookie (Básico): 'Laberinto Sencillo'</strong> <br><br> Nombre del Reto: 'El Camino Fácil de [Nombre del Personaje, elegido por los alumnos]' <br><br>  <span style="color: red; font-weight: bold;">Objetivo:</span> Ayudar a [nombre del personaje] a encontrar la salida de un laberinto simple. <br><br> <span style="color: red; font-weight: bold;">Instrucciones:</span> Abre un nuevo proyecto en Scratch Jr. Dibuja un laberinto muy fácil, como un caminito recto con una entrada y una salida. ¡Puedes usar formas simples! Elige un personaje que será el explorador, por ejemplo, un gatito. Usa las flechas de colores (bloques de movimiento) para decirle al gatito cómo caminar por el laberinto. El gatito debe llegar hasta la salida. ¡Inténtalo! <br><br> <span style="color: red; font-weight: bold;">Condiciones:</span> El laberinto debe tener un solo camino, ¡sin trucos! El gatito debe seguir el camino sin salirse.  <br><br>  <span style="color: red; font-weight: bold;">Consejo:</span> Empieza diciéndole al gatito que camine un poquito y luego añade más movimientos.  <br><br> <strong>Nivel Master (Intermedio): 'Laberinto con Decisiones'</strong> <br><br> Nombre del Reto: 'El Cruce del Desafío para [Nombre del Personaje, elegido por los alumnos]' <br><br> <span style="color: red; font-weight: bold;">Objetivo:</span> Ayudar a [nombre del personaje] a cruzar un laberinto donde debe elegir un camino. <br><br> <span style="color: red; font-weight: bold;">Instrucciones:</span> Abre un nuevo proyecto en Scratch Jr. Dibuja un laberinto donde haya un cruce, ¡como una ""Y""! Elige un personaje, por ejemplo, un perrito. Usa las flechas de colores para que el perrito llegue hasta el cruce. Luego, debes ayudar al perrito a elegir el camino correcto para llegar a la salida.  <br><br> <span style="color: red; font-weight: bold;">Condiciones:</span> El laberinto debe tener un cruce con dos caminos. El perrito debe tomar la decisión correcta para llegar al final. <br><br> <span style="color: red; font-weight: bold;">Consejo:</span> Prueba los dos caminos hasta encontrar el correcto. Si te equivocas, ¡puedes cambiar las flechas de colores!  <br><br> <strong>Nivel Hacker (Avanzado): 'Laberinto con Obstáculos'</strong>  <br><br> Nombre del Reto: 'La Aventura Imposible de [Nombre del Personaje, elegido por los alumnos]'  <br><br> <span style="color: red; font-weight: bold;">Objetivo:</span> Ayudar a [nombre del personaje] a cruzar un laberinto con obstáculos que debe evitar.  <br><br> <span style="color: red; font-weight: bold;">Instrucciones:</span> Abre un nuevo proyecto en Scratch Jr. Dibuja un laberinto con obstáculos, como unos fantasmitas o piedritas. Elige un personaje, por ejemplo, un conejito. Usa las flechas de colores para que el conejito camine por el laberinto sin tocar los obstáculos. Si el conejito toca un obstáculo, ¡debe volver a empezar! El conejito debe encontrar la salida.  <br><br> <span style="color: red; font-weight: bold;">Condiciones:</span> El laberinto debe tener al menos dos obstáculos que el conejito debe evitar. Si el conejito toca un obstáculo, debe volver a la entrada. El conejito debe llegar a la salida sin chocar. <br><br> <span style="color: red; font-weight: bold;">Consejo:</span> Usa el bloque de ""volver"" si el conejito toca un obstáculo. ¡Ten cuidado y diviértete!"</td>
+                    </tr>
+                     <tr style="border-bottom: 1px solid #ddd;">
+                       <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;"><strong>Paso 3 (20 minutos):</strong> Proyectar la diapositiva 11 "¡A Resolver el Laberinto!". Supervisar a los estudiantes mientras trabajan, ayudándolos a cumplir las condiciones y resolver dudas.</td>
+                        <td style="padding: 10px; vertical-align: top;">"¡Es hora de programar, Exploradores! 💻 Elijan su desafío: - Rookie: ¡Encuentren el camino fácil! - Master: ¡Decidan el camino correcto! - Hacker: ¡Eviten los obstáculos! ¡Muestren su ingenio y habilidades en esta aventura en el laberinto, y no olviden darle el mejor nombre a su personaje!"</td>
+                    </tr>
+                     <tr>
+                        <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;"><strong>Paso 4 (2 minutos):</strong> Proyectar la diapositiva 12 "¡Compartiendo Soluciones!". Facilitar que los estudiantes muestren sus proyectos y expliquen cómo lograron cumplir con las condiciones de cada nivel.</td>
+                         <td style="padding: 10px; vertical-align: top;">"¡Impresionantes soluciones, Genios! 🌟 Ahora, compartan sus experiencias: - Rookie: ¿Cómo encontraron el camino fácil y qué nombre le pusieron a su personaje? - Master: ¿Cómo tomaron la decisión correcta y qué nombre le dieron a su personaje? - Hacker: ¿Cómo lograron evitar los obstáculos y qué nombre le pusieron a su personaje? ¡Inspírense unos a otros con sus increíbles aventuras!"</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- Actividad 4 -->
+        <div id="activity-4" class="activity" data-time="10">
+            <div class="banner" onclick="toggleContent('activity_4_content')">
+                <div class="title">🤝 Actividad 4: Team Gnius ⏰ Tiempo: 10 minutos</div>
+                 <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 5px 0;">
+                <div class="subtitle" style="margin-top: 5px; font-size: 0.9em; color: #e0e0e0;">
+                   Colaboración en equipos para revisar y mejorar los proyectos de laberintos.
+                </div>
+            </div>
+            <div id="activity_4_content" class="content">
+                 <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+                    <tr style="border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                        <th style="width: 50%; padding: 10px; text-align: left; border-right: 1px solid #ddd;">Acción</th>
+                        <th style="width: 50%; padding: 10px; text-align: left;">Diálogo Maestro</th>
+                    </tr>
+                     <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;"><strong>Paso 1 (0,5 minutos):</strong> Proyectar la diapositiva 13 "¡Equipos de Exploración en el Laberinto!". Pedir a los estudiantes que formen equipos con compañeros cercanos para realizar la actividad de colaboración.</td>
+                        <td style="padding: 10px; vertical-align: top;">"¡Exploradores de laberintos, es hora de unir fuerzas! 🤝 Júntense con dos o tres compañeros cercanos para formar sus equipos de exploración en el laberinto. Juntos compartirán ideas, mejorarán sus soluciones y harán que nuestros personajes superen cualquier desafío."</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;"><strong>Paso 2 (1 minuto):</strong> Proyectar la diapositiva 14 "Roles de Exploración en el Laberinto". Pedir a los equipos que distribuyan roles: - Estratega de Laberintos. - Programador de Caminos. - Probador de Aventuras.</td>
+                       <td style="padding: 10px; vertical-align: top;">"¡Cada equipo necesita un plan de exploración! 🌟 Decidan juntos quién será: - Estratega de Laberintos: Planifica el camino y la solución. - Programador de Caminos: Se encarga de los bloques de movimiento. - Probador de Aventuras: Prueba la solución y da ideas de mejora. ¡Organícense en un minuto, Genios!"</td>
+                    </tr>
+                     <tr style="border-bottom: 1px solid #ddd;">
+                         <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;"><strong>Paso 3 (1 minuto):</strong> Proyectar la diapositiva 15 "Herramientas de Exploración en el Laberinto". Pedir a los estudiantes que recojan Magic Tablets u otros materiales necesarios para trabajar.</td>
+                        <td style="padding: 10px; vertical-align: top;">"¡Es hora de recoger las herramientas de exploración! 🌟 Cada equipo necesitará sus Magic Tablets u otros materiales para registrar sus ideas y trabajar juntos. ¡Tienen 30 segundos para prepararse, estrategas, programadores y probadores de aventuras!"</td>
+                    </tr>
+                     <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;"><strong>Paso 4 (2 minutos):</strong> Proyectar la diapositiva 16 "¡Revisión de Rutas!". Pedir a los estudiantes que observen los proyectos de sus compañeros y respondan a preguntas clave para proporcionar retroalimentación.</td>
+                        <td style="padding: 10px; vertical-align: top;">"¡Estrategas, programadores y probadores, a observar con atención! 🔎 Revisen las soluciones de sus compañeros y respondan estas preguntas: - ¿Qué les pareció la ruta elegida? - ¿Cómo podrían mejorar la solución para que sea más eficiente? - ¿Qué detalles les inspiraron y podrían usar en sus propios laberintos? ¡Sean curiosos y constructivos en sus comentarios!"</td>
+                    </tr>
+                     <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;"><strong>Paso 5 (3 minutos):</strong> Proyectar la diapositiva 17 "¡Turno de Exploración!". Pedir a los estudiantes que se turnen para explicar sus proyectos y recibir preguntas del equipo.</td>
+                         <td style="padding: 10px; vertical-align: top;">"¡Es su turno de brillar como exploradores! 🌟 Por turnos, expliquen cómo resolvieron el laberinto: - ¿Qué estrategia usaron y qué bloques de movimiento eligieron? - ¿Qué desafíos encontraron en su proceso? - ¿Qué hace que su solución sea única? El resto del equipo hará preguntas para aprender más. ¡Luego cambien de rol y muestren sus soluciones!"</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;"><strong>Paso 6 (3 minutos):</strong> Proyectar la diapositiva 18 "¡Ajustes en Equipo!". Dar tiempo a los equipos para trabajar juntos en los ajustes sugeridos durante la revisión.</td>
+                        <td style="padding: 10px; vertical-align: top;">"¡Es tiempo de perfeccionar sus soluciones, Genios! 🚀 Tomen las ideas que compartieron y ajusten sus rutas. Recuerden, la lógica y la eficiencia son clave. ¡Trabajen juntos para que sus soluciones sean aún mejores y más emocionantes!"</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;"><strong>Paso 7 (2 minutos):</strong> Proyectar la diapositiva 19 "¡Reflexión en Equipo!". Facilitar preguntas como: - ¿Qué aprendieron de trabajar juntos? - ¿Cómo mejoraron sus proyectos gracias a las ideas de sus compañeros? - ¿Qué fue lo más divertido de esta exploración en equipo?</td>
+                         <td style="padding: 10px; vertical-align: top;">"¡Estrategas, programadores y probadores, reflexionemos sobre esta experiencia en el laberinto! 🌿 - ¿Qué aprendieron trabajando juntos en equipo? - ¿Cómo mejoraron sus soluciones gracias a las ideas de sus compañeros? - ¿Qué fue lo más divertido de explorar el laberinto juntos? ¡El trabajo en equipo siempre nos lleva a lo más alto en la resolución de problemas!"</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+                <!-- Actividad 5 -->
+        <div id="activity-5" class="activity" data-time="2.5">
+            <div class="banner" onclick="toggleContent('activity_5_content')">
+                <div class="title">🏅 Actividad 5: Honor the Lab ⏰ Tiempo: 2.5 minutos</div>
+                 <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 5px 0;">
+                <div class="subtitle" style="margin-top: 5px; font-size: 0.9em; color: #e0e0e0;">
+                    Reflexión sobre los logros de la clase, reconocimiento del esfuerzo y organización del espacio de trabajo.
+                </div>
+            </div>
+             <div id="activity_5_content" class="content">
+                <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+                    <tr style="border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                        <th style="width: 50%; padding: 10px; text-align: left; border-right: 1px solid #ddd;">Acción</th>
+                        <th style="width: 50%; padding: 10px; text-align: left;">Diálogo Maestro</th>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;"><strong>Paso 1 (0,5 minutos):</strong> Proyectar la diapositiva 20 "¡Revisión de Objetivos en el Laberinto!". Guiar a los estudiantes en una breve reflexión grupal sobre lo aprendido y logrado durante la clase.</td>
+                        <td style="padding: 10px; vertical-align: top;">"¡Exploradores de laberintos, qué aventura tan emocionante hemos vivido hoy! 🌟 Reflexionemos juntos: - ¿Cumplimos nuestra misión de hoy? ¡Sí! Utilizamos bloques de movimiento, resolvimos desafíos con cruces y obstáculos y trabajamos en equipo. ¡Todo gracias a su ingenio y esfuerzo! 🐾"</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;"><strong>Paso 2 (1 minuto):</strong> Realizar el reconocimiento de logros mediante un mensaje verbal motivador.</td>
+                        <td style="padding: 10px; vertical-align: top;">"¡Felicidades, Genios Exploradores! 🌟 Hoy se convirtieron en verdaderos expertos en laberintos y guiaron a nuestro valiente personaje a través de desafíos increíbles. Cada obstáculo superado, cada camino encontrado es una prueba de su talento. Recuerden siempre: ¡ustedes tienen el poder de resolver cualquier problema que se les presente! ¡Nos vemos en nuestra próxima misión!"</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;"><strong>Paso 3 (1 minuto):</strong> Proyectar la diapositiva 21 "Organización del Laboratorio de Laberintos". Pedir a los estudiantes que devuelvan los materiales (Magic Tablets, etc.) a su lugar correspondiente y que organicen el espacio de trabajo.</td>
+                         <td style="padding: 10px; vertical-align: top;">"¡Antes de dejar nuestro laberinto, debemos dejar todo listo para la próxima exploración! 🌿 Por favor, devuelvan las Magic Tablets y todos los materiales a su lugar. Recuerden que un espacio limpio nos inspira para seguir aprendiendo y creando. ¡Gracias por su colaboración!"</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+        <!-- Scripts adicionales -->
+    <script>
+        // Aquí puedes agregar más scripts si es necesario
+    </script>
+</body>
+</html>
